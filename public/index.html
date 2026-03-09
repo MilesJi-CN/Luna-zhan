@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乱战 | 全球战争信息追踪</title>
+  <meta name="description" content="实时抓取全球战争、冲突、军事相关新闻">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #eee;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      padding: 40px 0;
+      border-bottom: 2px solid #e74c3c;
+      margin-bottom: 30px;
+    }
+    h1 {
+      font-size: 3em;
+      color: #e74c3c;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      color: #aaa;
+      font-size: 1.1em;
+    }
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      background: rgba(231, 76, 60, 0.2);
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 1px solid #e74c3c;
+    }
+    .stat-label { color: #aaa; font-size: 0.9em; }
+    .stat-value { color: #e74c3c; font-size: 1.3em; font-weight: bold; }
+    .news-list { list-style: none; }
+    .news-item {
+      background: rgba(255,255,255,0.05);
+      border-left: 4px solid #e74c3c;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 0 8px 8px 0;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .news-item:hover {
+      transform: translateX(5px);
+      background: rgba(255,255,255,0.08);
+    }
+    .news-title {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    .news-title a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .news-title a:hover { color: #e74c3c; }
+    .news-meta {
+      display: flex;
+      gap: 15px;
+      font-size: 0.85em;
+      color: #888;
+      flex-wrap: wrap;
+    }
+    .news-source {
+      background: #e74c3c;
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.8em;
+    }
+    .news-date { color: #666; }
+    .news-description {
+      margin-top: 12px;
+      color: #bbb;
+      font-size: 0.95em;
+    }
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #666;
+    }
+    .empty-state h2 { color: #e74c3c; margin-bottom: 10px; }
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: #666;
+      font-size: 0.9em;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 40px;
+    }
+    .refresh-notice {
+      background: rgba(231, 76, 60, 0.1);
+      border: 1px solid #e74c3c;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 0.9em;
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 2em; }
+      .stats { gap: 15px; }
+      .stat-item { padding: 8px 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>⚔️ 乱战</h1>
+      <p class="subtitle">全球战争信息追踪 | Real-time Conflict Monitor</p>
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-label">新闻数量</div>
+          <div class="stat-value">22</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">更新次数</div>
+          <div class="stat-value">2</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">最后更新</div>
+          <div class="stat-value">2026/3/9 10:23:08</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="refresh-notice">
+      🔄 数据每 15 分钟自动更新 | 来源：Reuters, BBC, Al Jazeera, CNN
+    </div>
+
+    
+      <ul class="news-list">
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/middle-east/20260308-profile-who-is-mojtaba-khamenei-son-and-successor-to-iran-supreme-leader" target="_blank" rel="noopener">📰 Who is Mojtaba Khamenei, son and successor to Iran&#039;s supreme leader?</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/09 05:37</span>
+            </div>
+            <div class="news-description">Iran&#039;s Assembly of Experts has named Mojtaba Khamenei to succeed his slain father Ali Khamenei as the country&#039;s supreme leader, signalling that hardliners remain firmly in charge in Tehran more than a...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/middle-east/20260308-middle-east-war-live-deadly-strike-on-ramada-hotel-in-central-beirut-israel-bombs-iran-oil-facilities" target="_blank" rel="noopener">📰 Iran names Khamenei&#039;s son Mojtaba as new supreme leader, state media report</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/09 05:17</span>
+            </div>
+            
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/video/20260308-israeli-strikes-on-tehran-infrastructure-aim-to-limit-regime-s-ability-to-govern" target="_blank" rel="noopener">📰 Israeli strikes on Tehran infrastructure aim to &#039;limit regime&#039;s ability to govern&#039;</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/09 03:02</span>
+            </div>
+            <div class="news-description">In an interview with FRANCE 24, Hen Feder, the Israeli Embassy spokesperson in Paris, said Israeli attacks on oil depots in Tehran were part of a new phase of the war. &quot;The infrastructure that is conn...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/lebanon-reports-83-children-among-dead-after-israeli-attacks" target="_blank" rel="noopener">📰 Lebanon reports 83 children among dead after Israeli attacks</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/09 00:48</span>
+            </div>
+            <div class="news-description">Israel&#039;s military said it struck Iranian commanders in the Lebanese capital early on Sunday, expanding the scope of its strikes to the heart of Beirut after days of attacks that have left nearly 400 p...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/iran-keeps-targeting-gulf-states-the-situation-in-oman" target="_blank" rel="noopener">📰 Iran targets its Gulf neighbours: the situation in Oman</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/09 00:30</span>
+            </div>
+            <div class="news-description">French Ambassador to Oman Nabil Hajlaoui spoke with FRANCE 24 about the situation in Oman as Iran continued strikes on its regional neighbours in response to US-Israeli attacks starting one week ago....</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/iran-keeps-targeting-gulf-states" target="_blank" rel="noopener">📰 Iran keeps targeting Gulf states</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/09 00:28</span>
+            </div>
+            <div class="news-description">Iran’s powerful Islamic Revolutionary Guard Corps (IRGC) expressed its disapproval of Iranian president Pezeshkian remarks on Saturday, warning neighbouring countries that Tehran would continue attack...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/attacks-spark-huge-fires-in-tehran" target="_blank" rel="noopener">📰 Attacks spark huge fires in Tehran</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/08 23:54</span>
+            </div>
+            <div class="news-description">Several oil depots in Tehran were hit by airstrikes overnight with video from the city showing large fires and an orange sky.
+
+The Shahran oil facility in the northwest of the Iranian capital was one ...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/assembly-of-experts-reaches-decision-on-khamenei-successor" target="_blank" rel="noopener">📰 Assembly of Experts reaches decision on Khamenei successor</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/08 23:47</span>
+            </div>
+            <div class="news-description">The body responsible for selecting Iran’s next Supreme Leader said it had reached a decision, though the name has not yet been announced. Meanwhile, Israel warned it would “pursue every successor” to ...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/iran-oil-depots-hit-by-israeli-us-strikes" target="_blank" rel="noopener">📰 Iran : Oil depots hit by Israeli-US strikes</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/08 23:47</span>
+            </div>
+            <div class="news-description">Strikes in #Iran hit #oil depots overnight on 7–8 March, killing several people and triggering fires. #Tehran woke under thick #smoke and #toxic rain as the regime has just appointed its new #supreme ...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/tv-shows/tech-24/20260308-trump-s-claude-ban-the-first-salvo-in-a-long-battle-over-who-controls-ai" target="_blank" rel="noopener">📰 Trump&#039;s Claude ban: the first salvo in a long battle over who controls AI</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/08 23:42</span>
+            </div>
+            <div class="news-description">A struggle to control artificial intelligence is playing out, just as United States puts the technology to task in conflicts from Venezuela to Iran....</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/video/20260308-france24-speaks-to-david-petraeus-analysis-on-us-israeli-strikes-on-iran-and-the-regional-fallout" target="_blank" rel="noopener">📰 David Petraeus speaks to FRANCE 24: Analysis on US-Israeli strikes on Iran and the regional fallout</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/08 22:48</span>
+            </div>
+            <div class="news-description">The body responsible for selecting Iran’s next Supreme Leader said it had reached a decision, though the name has not yet been announced.
+
+Meanwhile, Israel warned it would “pursue every successor” to...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/donald-trump-taunts-starmer-over-iran-war" target="_blank" rel="noopener">📰 Donald Trump taunts Starmer over Iran war</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/08 21:58</span>
+            </div>
+            <div class="news-description">The US-UK “special relationship” could be on thin ice after President Donald Trump lashed out at the British Prime Minister. Trump said he didn’t need Britain’s help to fight the Iran war, after the B...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/iran-targets-tel-aviv-bersheeva" target="_blank" rel="noopener">📰 Iran targets Tel Aviv, Bersheeva</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/08 21:55</span>
+            </div>
+            <div class="news-description">Several blasts have been reported over Tel Aviv after the Israeli army said it detected missiles launched from Iran toward the city and Beersheva. Defensive systems are operating to intercept the thre...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/iran-continues-to-target-gulf-states" target="_blank" rel="noopener">📰 Iran continues to target Gulf states</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/08 21:54</span>
+            </div>
+            <div class="news-description">Iran’s President Masoud Pezeshkian has been clarifying remarks he made Saturday, saying his apologies to neighboring countries were misinterpreted by enemies. He stated that Iran has been forced to re...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/israel-pounds-lebanon-83-children-among-almost-400-killed-in-a-week" target="_blank" rel="noopener">📰 Israel pounds Lebanon: 83 children among almost 400 killed in a week</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/08 21:32</span>
+            </div>
+            <div class="news-description">Lebanon’s Health Minister says 83 children were among nearly 400 people killed in a week of fighting between Hezbollah and Israel.
+
+For more on the situation, Sarah El-Yafi, Public Policy and Internat...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/iran-strikes-five-gulf-states-arab-league-convene-emergency-session" target="_blank" rel="noopener">📰 Iran strikes five Gulf states: Arab league convene emergency session</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/08 20:53</span>
+            </div>
+            <div class="news-description">On Saturday, Iranian President Masoud Pezeshkian surprised many observers by apologizing for strikes on neighboring countries and saying the conflict should be resolved diplomatically. But since then,...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/middle-east/20260308-black-smoke-plunges-tehran-into-darkness-after-israeli-strikes-on-oil-depots" target="_blank" rel="noopener">📰 Black smoke plunges Tehran into darkness after Israeli strikes on oil depots</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/08 20:45</span>
+            </div>
+            <div class="news-description">The Iranian Red Crescent on Sunday warned Tehran residents to take extra precautions to avoid noxious fumes stemming from a fire that broke out after Israel struck multiple oil storage depots, cloakin...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/middle-east/20260308-week-in-pictures-war-middle-east-milan-cortina-paralympic-games-holi-celebrations" target="_blank" rel="noopener">📰 The week in pictures: War in the Middle East, Milan Cortina Paralympic Games and Holi celebrations</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/08 19:51</span>
+            </div>
+            <div class="news-description">From Israeli strikes on Lebanon and tributes to Iranian victims of the new war in the Middle East to celebrations of Purim in Israel, Holi in India, and the Paralympic Games&#039; kickoff in Milan-Cortina,...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/israel-strikes-lebanon-12-people-killed-in-three-separate-overnight-strikes" target="_blank" rel="noopener">📰 Israel strikes Lebanon: 12 people killed in three separate overnight strikes</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/08 19:16</span>
+            </div>
+            <div class="news-description">Twelve more people were killed Sunday morning in Lebanon by Israeli strikes, pushing the country’s death toll past 300 since fighting began on February 28. As Israeli forces continue targeting Hezboll...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/iran-new-supreme-leader-set-to-be-announced" target="_blank" rel="noopener">📰 Iran: New Supreme Leader set to be announced</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/08 19:00</span>
+            </div>
+            <div class="news-description">In Iran, the body responsible for choosing the next Supreme Leader has made a decision, but the name has not been released. Ayatollah Ali Khamenei was killed in US-Israeli strikes eight days ago.
+ 
+Si...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/israeli-tanks-push-into-southern-lebanon-christian-villagers-defy-israeli-evacuation-orders" target="_blank" rel="noopener">📰 Israeli tanks push into southern Lebanon: Christian villagers defy Israeli evacuation orders</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/08 18:26</span>
+            </div>
+            <div class="news-description">In southern Lebanon, the Christian village of Marjayoun is among several that have chosen to defy Israel’s evacuation orders. Israeli strikes hit this border region hard on Friday. Here’s a look at th...</div>
+          </li>
+        
+          <li class="news-item">
+            <div class="news-title">
+              <a href="https://www.france24.com/en/454-000-people-registered-as-displaced-thousands-sleep-rough-as-israeli-strike-shelters-overwhelmed" target="_blank" rel="noopener">📰 454,000 displaced: Thousands sleep rough in Beirut as strike shelters overwhelmed</a>
+            </div>
+            <div class="news-meta">
+              <span class="news-source">France 24</span>
+              <span class="news-date">🕐 2026/03/08 18:20</span>
+            </div>
+            <div class="news-description">As Israeli strikes continue in southern Lebanon, for many people there is nowhere left to go. Some are sleeping in cars, on the streets or on the beach. Hundreds of schools, places of worship, and sta...</div>
+          </li>
+        
+      </ul>
+    
+
+    <footer>
+      <p>乱战 LuanZhan © 2026 | 数据来源：公开 RSS 源</p>
+      <p>⚠️ 本网站仅供信息参考，不代表任何政治立场</p>
+    </footer>
+  </div>
+</body>
+</html>
