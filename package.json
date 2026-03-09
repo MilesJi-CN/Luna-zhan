@@ -1,0 +1,15 @@
+{
+  "name": "luan-zhan",
+  "version": "1.0.0",
+  "description": "战争信息抓取网站",
+  "type": "module",
+  "scripts": {
+    "fetch": "node src/fetcher.js",
+    "build": "node src/build.js"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "cheerio": "^1.0.0-rc.12",
+    "rss-parser": "^3.13.0"
+  }
+}
